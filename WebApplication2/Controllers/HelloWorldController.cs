@@ -24,5 +24,34 @@ namespace WebApplication2.Controllers
 
             return View();
         }
+
+        public ViewResult TextView(string name, int numTimes = 1)
+        {
+            ViewBag.Message = "Hello " + name;
+            ViewBag.NumTimes = numTimes;
+
+            return View();
+        }
+
+        public PartialViewResult Partial()
+        {
+            return PartialView("_PartialView");
+        }
+
+        public RedirectResult RedirectView()
+        {
+            return Redirect("Welcome");
+        }
+
+        public ActionResult JSON()
+        {
+            var persons = new List<Person1>
+       {
+        new Person1{Id=1, FirstName="Harry", LastName="Potter"},
+              new Person1{Id=2, FirstName="James", LastName="Raj"}
+       };
+            return Json(persons, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
